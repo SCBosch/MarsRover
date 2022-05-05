@@ -28,11 +28,8 @@ public class Marsrover {
             moveForward();
         }else if(move == 'B') {
             moveBackwards();
-        }else if(move == 'R'){
-            turn(move);
-        }else if(move == 'L' ){
-            turn(move);
         }
+        turn(move);
     }
 
     private void moveBackwards() {
@@ -63,7 +60,8 @@ public class Marsrover {
         if(this.direction == "North"){
             if(direction == 'R') {
                 this.direction = "East";
-            }else if(direction == 'L'){
+            }
+            else if(direction == 'L'){
                 this.direction = "West";
             }
         }
