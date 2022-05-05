@@ -1,9 +1,17 @@
+import java.util.HashMap;
 
 public class Marsrover {
 
     private int y;
     private int x;
     private String direction;
+
+    HashMap<String, Coordinate> moveMap  = new HashMap<String, Coordinate>() {{
+        put("North", new Coordinate(0, 1));
+        put("East", new Coordinate(1, 0));
+        put("South", new Coordinate(0, -1));
+        put("West", new Coordinate(-1, 0));
+    }};
 
     public Marsrover(int x, int y, String direction) {
         this.x = x;
@@ -33,27 +41,15 @@ public class Marsrover {
     }
 
     private void moveBackwards() {
-        if(direction == "North") {
-            this.y -= 1;
-        }else if(direction == "South"){
-            this.y += 1;
-        }else if(direction == "East"){
-            this.x -= 1;
-        }else if(direction == "West"){
-            this.x += 1;
-        }
+        Coordinate changeCoordinate = moveMap.get(direction);
+        this.x += -changeCoordinate.x;
+        this.y += -changeCoordinate.y;
     }
 
     private void moveForward() {
-        if(direction == "North") {
-            this.y += 1;
-        }else if(direction == "South"){
-            this.y -= 1;
-        }else if(direction == "East") {
-            this.x += 1;
-        }else if(direction == "West"){
-            this.x -= 1;
-        }
+        Coordinate changeCoordinate = moveMap.get(direction);
+        this.x += changeCoordinate.x;
+        this.y += changeCoordinate.y;
     }
 
     private void turn(char direction) {
