@@ -58,6 +58,17 @@ class MarsroverTest {
     }
 
     @Test
+    void roverCanMoveForwardsWest() {
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "West");
+
+        rover.move('F');
+
+        assertEquals(initialXCoordinate - 1, rover.getXCoordinate());
+    }
+
+    @Test
     void roverCanMoveBackwardsSouth(){
         int initialXCoordinate = 5;
         int initialYCoordinate = 5;

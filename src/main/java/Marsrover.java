@@ -52,6 +52,8 @@ public class Marsrover {
             this.y -= 1;
         }else if(direction == "East") {
             this.x += 1;
+        }else if(direction == "West"){
+            this.x -= 1;
         }
     }
 
