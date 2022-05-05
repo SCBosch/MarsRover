@@ -23,11 +23,7 @@ public class Marsrover {
 
     public void move(char move) {
         if (move == 'F') {
-            if(direction == "North") {
-                this.y += 1;
-            }else if(direction == "South"){
-                this.y -= 1;
-            }
+            moveForward();
         }else if(move == 'B') {
             if(direction == "North") {
                 this.y -= 1;
@@ -38,6 +34,14 @@ public class Marsrover {
             turn(move);
         }else if(move == 'L' ){
             turn(move);
+        }
+    }
+
+    private void moveForward() {
+        if(direction == "North") {
+            this.y += 1;
+        }else if(direction == "South"){
+            this.y -= 1;
         }
     }
 
