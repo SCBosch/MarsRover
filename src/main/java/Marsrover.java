@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Marsrover {
 
@@ -7,11 +10,13 @@ public class Marsrover {
     private String direction;
 
     HashMap<String, Coordinate> moveMap  = new HashMap<String, Coordinate>() {{
-        put("North", new Coordinate(0, 1));
-        put("East", new Coordinate(1, 0));
-        put("South", new Coordinate(0, -1));
-        put("West", new Coordinate(-1, 0));
+        put("N", new Coordinate(0, 1));
+        put("E", new Coordinate(1, 0));
+        put("S", new Coordinate(0, -1));
+        put("W", new Coordinate(-1, 0));
     }};
+
+    List<String> directions = Arrays.asList("N", "E", "S", "W");
 
     public Marsrover(int x, int y, String direction) {
         this.x = x;
@@ -53,12 +58,12 @@ public class Marsrover {
     }
 
     private void turn(char direction) {
-        if(this.direction == "North"){
+        if(this.direction == "N"){
             if(direction == 'R') {
-                this.direction = "East";
+                this.direction = "E";
             }
             else if(direction == 'L'){
-                this.direction = "West";
+                this.direction = "W";
             }
         }
     }
