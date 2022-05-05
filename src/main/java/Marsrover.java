@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Marsrover {
 
@@ -36,10 +36,17 @@ public class Marsrover {
         return this.direction;
     }
 
-    public void move(char move) {
-        if (move == 'F') {
+    public void move(String move) {
+        char[] instructions = move.toCharArray();
+        for (char instruction : instructions) {
+            processInstruction(String.valueOf(instruction));
+        }
+    }
+
+    private void processInstruction(String move) {
+        if (Objects.equals(move, "F")) {
             moveForward();
-        }else if(move == 'B') {
+        }else if("B".equals(move)) {
             moveBackwards();
         }
         turn(move);
@@ -57,14 +64,15 @@ public class Marsrover {
         this.y += changeCoordinate.y;
     }
 
-    private void turn(char direction) {
-        if(this.direction == "N"){
-            if(direction == 'R') {
-                this.direction = "E";
-            }
-            else if(direction == 'L'){
-                this.direction = "W";
-            }
+    private void turn(String direction) {
+        if(direction.equals("R")) {
+            int originalIndex = this.directions.indexOf(this.direction);
+            int newDirectionIndex = originalIndex == 3 ? 0 : originalIndex + 1;
+            this.direction =  this.directions.get(newDirectionIndex);
+        }else if(direction.equals("L")){
+            int originalIndex = this.directions.indexOf(this.direction);
+            int newDirectionIndex = originalIndex == 0 ? 3 : originalIndex - 1;
+            this.direction =  this.directions.get(newDirectionIndex);
         }
     }
 }
