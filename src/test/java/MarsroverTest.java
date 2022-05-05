@@ -12,4 +12,59 @@ class MarsroverTest {
         assertEquals(initialCoordinate, rover.getXCoordinate());
         assertEquals("North", rover.getDirection());
     }
+
+    @Test
+    void roverCanMoveBackwardsNorth() {
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "North");
+
+        rover.move('B');
+
+        assertEquals(initialYCoordinate - 1, rover.getYCoordinate());
+    }
+
+    @Test
+    void roverCanMoveForwardsSouth(){
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "South");
+
+        rover.move('F');
+
+        assertEquals(initialYCoordinate - 1, rover.getYCoordinate());
+    }
+
+    @Test
+    void roverCanMoveBackwardsSouth(){
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "South");
+
+        rover.move('B');
+
+        assertEquals(initialYCoordinate + 1, rover.getYCoordinate());
+    }
+
+    @Test
+    void roverCanTurnRightFromNorth(){
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "North");
+        rover.move('R');
+
+        assertEquals("East", rover.getDirection());
+    }
+
+    @Test
+    void roverCanTurnLeftFromNorth(){
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "North");
+        rover.move('L');
+
+        assertEquals("West", rover.getDirection());
+    }
+
+
 }
