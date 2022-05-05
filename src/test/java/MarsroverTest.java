@@ -128,4 +128,13 @@ class MarsroverTest {
         assertEquals("S", rover.getDirection());
     }
 
+    @Test
+    void roverCanIgnoreInvalidInstructions() {
+        int initialXCoordinate = 5;
+        int initialYCoordinate = 5;
+        Marsrover rover = new Marsrover(initialXCoordinate, initialYCoordinate, "N");
+        rover.move("RXR");
+        assertEquals("S", rover.getDirection());
+    }
+
 }
