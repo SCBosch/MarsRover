@@ -2,13 +2,17 @@
 public class Marsrover {
 
     private int y;
+    private int x;
+    private String direction;
 
     public Marsrover(int x, int y, String direction) {
+        this.x = x;
         this.y = y;
+        this.direction = direction;
     }
 
     public int getXCoordinate() {
-        return 1;
+        return this.x;
     }
 
     public int getYCoordinate() {
@@ -16,10 +20,50 @@ public class Marsrover {
     }
 
     public String getDirection() {
-        return "North";
+        return this.direction;
     }
 
     public void move(char move) {
-        this.y += 1;
+        if (move == 'F') {
+            moveForward();
+        }else if(move == 'B') {
+            moveBackwards();
+        }
+        turn(move);
+    }
+
+    private void moveBackwards() {
+        if(direction == "North") {
+            this.y -= 1;
+        }else if(direction == "South"){
+            this.y += 1;
+        }else if(direction == "East"){
+            this.x -= 1;
+        }else if(direction == "West"){
+            this.x += 1;
+        }
+    }
+
+    private void moveForward() {
+        if(direction == "North") {
+            this.y += 1;
+        }else if(direction == "South"){
+            this.y -= 1;
+        }else if(direction == "East") {
+            this.x += 1;
+        }else if(direction == "West"){
+            this.x -= 1;
+        }
+    }
+
+    private void turn(char direction) {
+        if(this.direction == "North"){
+            if(direction == 'R') {
+                this.direction = "East";
+            }
+            else if(direction == 'L'){
+                this.direction = "West";
+            }
+        }
     }
 }
